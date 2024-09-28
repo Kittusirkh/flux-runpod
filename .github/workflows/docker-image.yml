@@ -1,0 +1,30 @@
+name: Build and Push Docker Image to Docker Hub
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Log in to Docker Hub with hardcoded credentials (Not recommended for security reasons)
+    - name: Log in to Docker Hub
+      run: echo "dckr_pat_bOMBpfnvJjPOSZnmv6ceLjgIghM" | docker login -u "pranavajay" --password-stdin
+
+    # Build the Docker image
+    - name: Build Docker image
+      run: docker build . -t pranavajay/my-app:latest
+
+    # Push the Docker image to Docker Hub
+    - name: Push Docker image
+      run: docker push pranavajay/my-app:latest
