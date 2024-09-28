@@ -20,7 +20,7 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI /content/ComfyUI && \
     git clone https://github.com/ltdrdata/ComfyUI-Manager /content/ComfyUI/custom_nodes/ComfyUI-Manager && \
     git clone https://github.com/ciri/comfyui-model-downloader /content/ComfyUI/custom_nodes/comfyui-model-downloader
 
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev/resolve/main/flux1-dev.sft -d /content/ComfyUI/models/unet -o flux1-dev.sft && \
+RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/enhanceaiteam/MidFlow/resolve/main/midflow.safetensors -d /content/ComfyUI/models/unet -o flux1-dev.sft && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev/resolve/main/ae.sft -d /content/ComfyUI/models/vae -o ae.sft && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev/resolve/main/clip_l.safetensors -d /content/ComfyUI/models/clip -o clip_l.safetensors && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/FLUX.1-dev/resolve/main/t5xxl_fp16.safetensors -d /content/ComfyUI/models/clip -o t5xxl_fp16.safetensors
